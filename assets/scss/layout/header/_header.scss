@@ -1,0 +1,187 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  03. HEADER CSS START
+/*----------------------------------------*/
+.rs_header {
+    position: absolute;
+    right: 50px;
+    left: 50px;
+    top: 30px;
+    margin: 0 auto;
+    padding: 0 20px;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 50px;
+    border: 1px solid rgba(194, 194, 194, 0.7);
+    background: var(--rs-white-06);
+    box-shadow: 0px 16px 32px 5px rgba(180, 180, 180, 0.16);
+    backdrop-filter: blur(4px);
+}
+
+
+
+
+
+
+// main menu css 
+
+.rs_header {
+    &-menu {
+        margin-left: 90px;
+
+        ul {
+            list-style: none;
+
+            li {
+                display: inline-block;
+                position: relative;
+                margin-right: 40px;
+                padding: 32px 0;
+
+                @media #{$xxxxl} {
+                    margin-right: 20px;
+                }
+
+                @media #{$xxxl, $xxl} {
+                    margin-right: 10px;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                a {
+                    font-family: var(--rs-ff-title-font);
+                    color: var(--rs-title-color);
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+
+                &.has-sub-menu::after {
+                    content: "\f078";
+                    font-family: fontawesome;
+                    margin-left: 5px;
+                    color: var(--rs-title-color);
+
+                }
+
+                &:hover>a {
+                    color: var(--rs-theme-1);
+                }
+
+                &:hover::after {
+                    color: var(--rs-theme-1);
+                }
+
+                // submenu 
+                ul {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    width: 250px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                    visibility: hidden;
+                    opacity: 0;
+                    transform: scaleY(0);
+                    transform-origin: top;
+                    transition: 0.5s;
+                    background: var(--rs-white);
+                    z-index: 999;
+                    padding: 5px 0;
+
+                    li {
+                        padding: 5px 15px;
+                        margin: 0;
+                        display: block;
+                        border-radius: 0;
+                        position: relative;
+
+                        &::after {
+                            position: absolute;
+                            right: 20px;
+                            top: 4px;
+                        }
+
+                        a {
+                            color: var(--rs-title-color);
+
+                        }
+
+                        &:hover>a {
+                            color: var(--rs-theme-1);
+                        }
+
+                        &:hover {
+                            background: var(--rs-body);
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                        }
+
+                        ul {
+                            left: 100%;
+                            top: 0;
+                        }
+                    }
+                }
+
+                &:hover>ul {
+                    visibility: visible;
+                    opacity: 1;
+                    transform: scaleY(1);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+// header right 
+.rs_header {
+    &-cta {
+        display: flex;
+        align-items: center;
+        padding-left: 40px;
+        margin-left: 40px;
+        position: relative;
+
+        &::before {
+            content: "";
+            width: 1px;
+            height: 100%;
+            background: #042552;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            opacity: 0.2;
+        }
+
+        &-title {
+            color: #042552;
+            font-family: Rajdhani;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 0;
+            margin-left: 15px;
+
+            & a {
+                display: block;
+                color: #666;
+                margin-top: 5px;
+            }
+        }
+    }
+
+    &-equal {
+        margin-left: 40px;
+        cursor: pointer;
+    }
+
+    &-btn {
+        margin-left: 45px;
+    }
+}
